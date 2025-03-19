@@ -6,9 +6,28 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      appBar: AppBar(title: Text('Home Screen')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          children: const [Text('This is veasna development')],
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('This is veasna development'),
+            const SizedBox(height: 50),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/setting');
+              },
+              child: const Text('Go to setting screen'),
+            ),
+            const SizedBox(height: 50),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/profile');
+              },
+              child: const Text('Go to profile screen'),
+            ),
+          ],
         ),
       ),
     );
