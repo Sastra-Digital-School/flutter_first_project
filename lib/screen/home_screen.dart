@@ -8,7 +8,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Column(
-          children: const [Text('Welcome to the Home Screen')],
+          children: const [Text('This is veasna development')],
         ),
       ),
     );
