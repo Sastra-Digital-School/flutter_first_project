@@ -6,24 +6,22 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Screen'),
-      ),
+      appBar: AppBar(title: const Text('Home Screen')),
       body: ListView(
         children: [
           Card(
             child: ListTile(
-              title: const Text('Go to details screen'),
+              title: const Text('Go to the settings screen'),
               onTap: () {
-                Navigator.pushNamed(context, '/details');
+                Navigator.of(context).pushNamed('/settings');
               },
             ),
           ),
           Card(
             child: ListTile(
-              title: const Text('Go to settings screen'),
+              title: const Text('Go to the about screen'),
               onTap: () {
-                Navigator.pushNamed(context, '/settings');
+                Navigator.of(context).pushNamed('/about');
               },
             ),
           ),
