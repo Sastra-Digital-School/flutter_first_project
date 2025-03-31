@@ -37,7 +37,6 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: AppColors.background,
     brightness: Brightness.light,
-
     appBarTheme: AppBarTheme(
       elevation: 0,
       centerTitle: true,
@@ -47,15 +46,13 @@ class AppTheme {
         fontFamily: 'SourceSansPro-Bold',
         color: Colors.black,
       ),
-      iconTheme: IconThemeData(color: AppColors.splash, size: 26),
+      iconTheme: IconThemeData(color: AppColors.splash, size: 18),
     ),
     primarySwatch: primarySwatch,
     fontFamily: 'SourceSansPro-Regular',
     textTheme: TextTheme(
       bodySmall: AppTextStyle.regular16(color: Colors.black),
     ),
-    iconTheme: const IconThemeData(size: 33, color: Colors.white),
-    useMaterial3: false,
   );
 
   static ThemeData darkTheme = ThemeData(
