@@ -18,6 +18,7 @@ dependencies:
   intl: ^0.19.0
   shimmer: ^3.0.0
   easy_date_timeline: ^1.1.3
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
@@ -27,3 +28,44 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/image/
+    - assets/icons/
+    - assets/doc/
+
+  fonts:
+    - family: SourceSansPro-Regular
+      fonts:
+        - asset: assets/fonts/SourceSansPro-Regular.otf
+
+    - family: SourceSansPro-Bold
+      fonts:
+        - asset: assets/fonts/SourceSansPro-Bold.otf
+
+    - family: Battambang
+      fonts:
+        - asset: assets/fonts/KhmerOSBattambang-Regular.ttf
+
+    - family: Battambang-Bold
+      fonts:
+        - asset: assets/fonts/Battambang-Bold.ttf
+
+    - family: Khmer
+      fonts:
+        - asset: assets/fonts/Khmer-Regular.ttf
+
+    - family: FontAwesomeRegular
+      fonts:
+        - asset: assets/fonts/fa-regular-400.ttf
+          style: normal
+
+    - family: FontAwesomeBrands
+      fonts:
+        - asset: assets/fonts/fa-brands-400.ttf
+          style: normal
+
+    - family: FontAwesomeSolid
+      fonts:
+        - asset: assets/fonts/fa-solid-900.ttf
+          style: normal
