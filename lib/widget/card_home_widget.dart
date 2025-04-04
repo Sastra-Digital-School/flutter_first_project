@@ -4,12 +4,14 @@ import 'package:flutter_first_project/config/theme/theme_style.dart';
 class CardHomeWidget extends StatefulWidget {
   final String name;
   final String urlImage;
+  final bool isUrlNetwork;
   final List slideRowTitle;
 
   const CardHomeWidget({
     super.key,
     required this.name,
     required this.urlImage,
+    this.isUrlNetwork = true,
     required this.slideRowTitle,
   });
 
@@ -101,7 +103,10 @@ class _CardHomeWidgetState extends State<CardHomeWidget> {
               decoration: BoxDecoration(
                 color: Colors.grey[300],
                 image: DecorationImage(
-                  image: NetworkImage(widget.urlImage),
+                  image:
+                      widget.isUrlNetwork == true
+                          ? NetworkImage(widget.urlImage)
+                          : AssetImage(widget.urlImage),
                   fit: BoxFit.cover,
                 ),
                 // image: DecorationImage(image: AssetImage(profileImage)),

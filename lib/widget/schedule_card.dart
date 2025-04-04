@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_first_project/config/theme/theme_style.dart';
 
-class ScheduleCard extends StatefulWidget {
+class ScheduleCardWidget extends StatefulWidget {
   final String time;
   final String subject;
   final String teacher;
   final String duration;
   final void Function()? onTap;
 
-  const ScheduleCard({
+  const ScheduleCardWidget({
     super.key,
     required this.time,
     required this.subject,
@@ -18,14 +18,15 @@ class ScheduleCard extends StatefulWidget {
   });
 
   @override
-  State<ScheduleCard> createState() => _ScheduleCardState();
+  State<ScheduleCardWidget> createState() => _ScheduleCardWidgetState();
 }
 
-class _ScheduleCardState extends State<ScheduleCard>
+class _ScheduleCardWidgetState extends State<ScheduleCardWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   final Duration _animationDuration = const Duration(milliseconds: 300);
   final Tween<double> _tween = Tween<double>(begin: 1.0, end: 0.95);
+
   @override
   void initState() {
     _controller = AnimationController(vsync: this, duration: _animationDuration)

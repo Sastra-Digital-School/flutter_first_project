@@ -2,9 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_first_project/widget/card_home_widget.dart';
 import 'package:flutter_first_project/widget/date_time_line_widget.dart';
 import 'package:flutter_first_project/widget/schedule_card.dart';
+import 'package:intl/intl.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class HomeScreenFull extends StatefulWidget {
+  const HomeScreenFull({super.key});
+
+  @override
+  State<HomeScreenFull> createState() => _HomeScreenFullState();
+}
+
+class _HomeScreenFullState extends State<HomeScreenFull> {
+  var dateFormat = DateFormat('EEEE, dd MMMM').format(DateTime.now());
+  var date = DateTime.now();
+  void formatCustomDate(DateTime dateValue) {
+    setState(() {
+      dateFormat = DateFormat('EEEE, dd MMMM').format(dateValue);
+      print(dateFormat);
+      date = dateValue;
+      print(date);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +43,18 @@ class HomeScreen extends StatelessWidget {
     return Column(
       children: [
         CardHomeWidget(
-          name: 'Chamroeun Sithy',
-          urlImage: 'assets/image/profile_sithy.jpg',
-          isUrlNetwork: false,
-          // urlImage:
-          //     'https://www.pix-star.com/blog/wp-content/uploads/2021/05/digital-photo-frames.jpg',
+          name: 'Vichra',
+          urlImage:
+              'https://images.unsplash.com/photo-1541516160071-4bb0c5af65ba?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGFraW5nJTIwcGhvdG98ZW58MHx8MHx8fDA%3D',
           slideRowTitle: _slideRowTitle,
         ),
         DateTimeLineWidget(
-          initialDate: DateTime.now(),
-          onDateChange: (value) {},
+          initialDate: date,
+          onDateChange: (value) {
+            return formatCustomDate(value);
+          },
         ),
-        _buildSchedule(DateTime.now()),
+        _buildSchedule(date),
       ],
     );
   }
