@@ -56,7 +56,7 @@ class _CardHomeWidgetState extends State<CardHomeWidget> {
         alignment: Alignment.center,
         children: [
           Container(
-            margin: EdgeInsets.all(15),
+            margin: EdgeInsets.all(10),
             height: 400,
             width: double.infinity,
             decoration: BoxDecoration(
