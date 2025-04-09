@@ -2,24 +2,19 @@ import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_first_project/config/theme/theme_style.dart';
 
-class DateTimeLineWidget extends StatefulWidget {
+class DateTimeLineWidget extends StatelessWidget {
   final void Function(DateTime)? onDateChange;
   final DateTime? initialDate;
 
   const DateTimeLineWidget({super.key, this.onDateChange, this.initialDate});
 
   @override
-  State<DateTimeLineWidget> createState() => _DateTimeLineWidgetState();
-}
-
-class _DateTimeLineWidgetState extends State<DateTimeLineWidget> {
-  @override
   Widget build(BuildContext context) {
     return EasyDateTimeLine(
       activeColor: AppTheme.secondarySwatch[900],
-      initialDate: widget.initialDate ?? DateTime.now(),
+      initialDate: initialDate ?? DateTime.now(),
       onDateChange:
-          widget.onDateChange ??
+          onDateChange ??
           (selectedDate) {
             debugPrint("Selected Date: ${selectedDate.toLocal()}");
           },

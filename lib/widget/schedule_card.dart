@@ -122,13 +122,14 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget>
   }
 
   Widget _progressIndicator(String text) {
+    List durationValue = [0.5, 0.3, 0.2, 0.1, 1, 0.2];
     return Column(
       children: [
         Stack(
           alignment: Alignment.center,
           children: [
             CircularProgressIndicator(
-              value: 0.6,
+              value: durationValue[0],
               backgroundColor: AppTheme.primarySwatch.withValues(alpha: 0.2),
               color: AppTheme.primarySwatch,
               constraints: BoxConstraints(minHeight: 68, minWidth: 68),

@@ -17,9 +17,7 @@ class _HomeScreenFullState extends State<HomeScreenFull> {
   void formatCustomDate(DateTime dateValue) {
     setState(() {
       dateFormat = DateFormat('EEEE, dd MMMM').format(dateValue);
-      print(dateFormat);
       date = dateValue;
-      print(date);
     });
   }
 

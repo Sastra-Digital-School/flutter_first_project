@@ -3,12 +3,42 @@ import 'package:flutter_first_project/widget/card_home_widget.dart';
 import 'package:flutter_first_project/widget/date_time_line_widget.dart';
 import 'package:flutter_first_project/widget/schedule_card.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int currentIndex = 0;
+
+  void bottomNavigationBarTap(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
+  DateTime selectDate = DateTime.now();
+
+  void onChageDate(DateTime dateValue) {
+    setState(() {
+      selectDate = dateValue;
+    });
+  }
+
+  get screen => [
+    _buildBodyHome,
+    Container(color: Colors.amber),
+    Container(color: Colors.blue),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: _buildBody);
+    return Scaffold(
+      body: screen[currentIndex],
+      bottomNavigationBar: _buildBottomNavigationBar,
+    );
   }
 
   final List<String> _slideRowTitle = [
@@ -22,7 +52,7 @@ class HomeScreen extends StatelessWidget {
     'Stay motivated',
   ];
 
-  get _buildBody {
+  get _buildBodyHome {
     return Column(
       children: [
         CardHomeWidget(
@@ -35,16 +65,18 @@ class HomeScreen extends StatelessWidget {
         ),
         DateTimeLineWidget(
           initialDate: DateTime.now(),
-          onDateChange: (value) {},
+          onDateChange: (value) {
+            onChageDate(value);
+          },
         ),
-        _buildSchedule(DateTime.now()),
+        _buildSchedule(selectDate),
       ],
     );
   }
 
   Widget _buildSchedule(DateTime dateValue) {
     final Map<String, List<Map<String, String>>> schedules = {
-      "2025-04-04": [
+      "2025-04-07": [
         {
           "time": "07:00 - 07:45",
           "subject": "Japan",
@@ -82,7 +114,7 @@ class HomeScreen extends StatelessWidget {
           "duration": "10 min",
         },
       ],
-      "2025-02-10": [
+      "2025-04-08": [
         {
           "time": "07:00 - 07:45",
           "subject": "Physics",
@@ -117,6 +149,21 @@ class HomeScreen extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+
+  get _buildBottomNavigationBar {
+    List<BottomNavigationBarItem> items = [
+      BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+      BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'Menu'),
+      BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+    ];
+    return BottomNavigationBar(
+      currentIndex: currentIndex,
+      items: items,
+      onTap: (index) {
+        bottomNavigationBarTap(index);
+      },
     );
   }
 }
