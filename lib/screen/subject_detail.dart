@@ -104,16 +104,16 @@ class _SubjectDetailScreenState extends State<SubjectDetailScreen> {
     ),
   );
 
-  get _buildBody => Center(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(widget.index.toString(), style: AppTextStyle.bold26()),
-        Text('Time: ${widget.time}', style: AppTextStyle.bold26()),
-        Text("Teacher Name: ${widget.teacher}", style: AppTextStyle.bold26()),
-        Text("Date: ${widget.date}", style: AppTextStyle.bold26()),
-      ],
-    ),
-  );
+  // get _buildBody => Center(
+  //   child: Column(
+  //     crossAxisAlignment: CrossAxisAlignment.center,
+  //     mainAxisAlignment: MainAxisAlignment.center,
+  //     children: [
+  //       Text(widget.index.toString(), style: AppTextStyle.bold26()),
+  //       Text('Time: ${widget.time}', style: AppTextStyle.bold26()),
+  //       Text("Teacher Name: ${widget.teacher}", style: AppTextStyle.bold26()),
+  //       Text("Date: ${widget.date}", style: AppTextStyle.bold26()),
+  //     ],
+  //   ),
+  // );
 }
