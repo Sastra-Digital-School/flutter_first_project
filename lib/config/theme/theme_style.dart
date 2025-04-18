@@ -46,7 +46,7 @@ class AppTheme {
         fontFamily: 'SourceSansPro-Bold',
         color: Colors.black,
       ),
-      iconTheme: IconThemeData(color: AppColors.splash, size: 18),
+      iconTheme: IconThemeData(color: AppColors.splash, size: 2),
     ),
     primarySwatch: primarySwatch,
     fontFamily: 'SourceSansPro-Regular',

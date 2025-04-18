@@ -1,6 +1,8 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_first_project/config/functions/function.dart';
 import 'package:flutter_first_project/config/theme/theme_style.dart';
+import 'package:flutter_first_project/screen/subject_detail.dart';
 import 'package:flutter_first_project/widget/bottom_navigation_bar_widget.dart';
 import 'package:flutter_first_project/widget/date_time_line_widget.dart';
 import 'package:flutter_first_project/widget/schedule_card.dart';
@@ -30,14 +32,54 @@ class _HomeSmallState extends State<HomeSmall> {
   }
 
   get screen => [
-    // _buildBodyHome,
+    _buildBody,
     Container(color: Colors.amber),
     Container(color: Colors.blue),
+    Container(color: Colors.orange),
+    Container(color: Colors.green),
   ];
+
+  Future<void> _navigateAndDisplaySelection(
+    BuildContext context, {
+    required int index,
+    required String titleName,
+    required String time,
+    required String teacher,
+    required String data,
+  }) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder:
+            (context) => SubjectDetailScreen(
+              index: index,
+              titleName: titleName,
+              time: time,
+              teacher: teacher,
+              date: DateTime.now().toString(),
+            ),
+      ),
+    );
+
+    if (!context.mounted) return;
+
+    ScaffoldMessenger.of(context)
+      ..removeCurrentSnackBar()
+      ..showSnackBar(SnackBar(content: Text('${result[1]}')));
+  }
+
+  List iconList = [
+    Icons.home_filled,
+    Icons.school,
+    Icons.grid_view_rounded,
+    Icons.chat,
+    Icons.person,
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _buildBody,
+      body: screen[currentIndex],
       bottomNavigationBar: CustomBottomNavBar(
         selectedIndex: currentIndex,
         onTap: (index) {
@@ -77,12 +119,7 @@ class _HomeSmallState extends State<HomeSmall> {
       pinned: true,
       floating: false,
       expandedHeight: 428,
-      leading: IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        icon: Icon(Icons.arrow_back, size: 30),
-      ),
+      automaticallyImplyLeading: false,
       flexibleSpace: LayoutBuilder(
         builder: (context, constraints) {
           double expandedHeight = 435;
@@ -292,7 +329,7 @@ class _HomeSmallState extends State<HomeSmall> {
 
   Widget _buildSchedule(DateTime dateValue) {
     final Map<String, List<Map<String, String>>> schedules = {
-      "2025-04-09": [
+      "2025-04-18": [
         {
           "time": "07:00 - 07:45",
           "subject": "Japan",
@@ -330,7 +367,7 @@ class _HomeSmallState extends State<HomeSmall> {
           "duration": "10 min",
         },
       ],
-      "2025-02-10": [
+      "2025-04-20": [
         {
           "time": "07:00 - 07:45",
           "subject": "Physics",
@@ -364,7 +401,16 @@ class _HomeSmallState extends State<HomeSmall> {
               subject: selectedSchedule[index]["subject"]!,
               teacher: selectedSchedule[index]["teacher"]!,
               duration: selectedSchedule[index]["duration"]!,
-              onTap: () {},
+              onTap: () {
+                _navigateAndDisplaySelection(
+                  context,
+                  index: index,
+                  titleName: selectedSchedule[index]["subject"]!,
+                  time: selectedSchedule[index]["time"]!,
+                  teacher: selectedSchedule[index]["teacher"]!,
+                  data: dateKey,
+                );
+              },
             ),
           ),
           childCount: selectedSchedule.length,
